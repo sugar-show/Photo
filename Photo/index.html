@@ -35,6 +35,23 @@
             scrollContainer.style.scrollBehavior ="auto";
         })
 
+        scrollContainer.addEventListener("touchstart", (evt) => {
+        isTouching = true;
+        startX = evt.touches[0].clientX;
+    });
+
+    scrollContainer.addEventListener("touchmove", (evt) => {
+        if (!isTouching) return;
+        currentX = evt.touches[0].clientX;
+        let diffX = startX - currentX;
+        scrollContainer.scrollLeft += diffX;
+        startX = currentX;
+    });
+
+    scrollContainer.addEventListener("touchend", () => {
+        isTouching = false;
+    });
+
         nextBtn.addEventListener("click", ()=>{
             scrollContainer.style.scrollBehavior = "smooth";
             scrollContainer.scrollLeft += 900;
