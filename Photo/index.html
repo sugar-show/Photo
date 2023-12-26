@@ -28,6 +28,8 @@
         let scrollContainer = document.querySelector(".gallery");
         let backBtn = document.getElementById("backBtn");
         let nextBtn = document.getElementById("nextBtn");
+        let isTouching = false;
+    　　let startX, currentX;
 
         scrollContainer.addEventListener("wheel", (evt) => {
             evt.preventDefault();
